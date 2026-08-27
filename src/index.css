@@ -1,0 +1,248 @@
+:root {
+  /* Brand */
+  --cs-accent: #00A3FF;
+  --cs-accent-hover: #33B5FF;
+  --cs-accent-active: #0082CC;
+  
+  /* Backgrounds */
+  --bg-app: #121212;
+  --bg-panel: #1A1A1A;
+  --bg-surface: #242424;
+  --bg-surface-hover: #2E2E2E;
+  
+  /* Borders */
+  --border-divider: #333333;
+  --border-focus: #00A3FF;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-tertiary: #666666;
+  
+  /* Status */
+  --status-error: #FF4A4A;
+  --status-warning: #FFB800;
+  --status-success: #00D369;
+  --status-info: #00A3FF;
+
+  /* Grid */
+  --grid-color: #222222;
+  --grid-major-color: #2A2A2A;
+
+  /* Fonts */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* App is full viewport */
+}
+
+/* Typography Utility */
+.font-mono { font-family: var(--font-mono); }
+.text-xs { font-size: 11px; }
+.text-sm { font-size: 12px; }
+.text-base { font-size: 13px; }
+.text-lg { font-size: 16px; }
+.text-xl { font-size: 20px; }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-accent { color: var(--cs-accent); }
+
+/* Layouts */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-row { display: flex; flex-direction: row; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.flex-1 { flex: 1; }
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+
+/* Panels */
+.panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-divider);
+}
+.panel-header {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border-divider);
+  background-color: var(--bg-surface);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+/* UI Controls */
+button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 4px;
+  transition: background-color 0.1s, border-color 0.1s;
+}
+
+.btn {
+  padding: 4px 12px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-divider);
+}
+.btn:hover { background-color: var(--bg-surface-hover); }
+.btn-primary {
+  background-color: var(--cs-accent);
+  color: #000;
+  border-color: var(--cs-accent);
+  font-weight: 500;
+}
+.btn-primary:hover {
+  background-color: var(--cs-accent-hover);
+}
+.btn-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--text-secondary);
+}
+.btn-icon:hover {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+.btn-icon.active {
+  background-color: rgba(0, 163, 255, 0.15);
+  color: var(--cs-accent);
+}
+
+input, select {
+  background-color: var(--bg-app);
+  border: 1px solid var(--border-divider);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 4px 8px;
+  border-radius: 4px;
+  outline: none;
+}
+input:focus, select:focus {
+  border-color: var(--cs-accent);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-divider);
+  border: 2px solid var(--bg-app);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Data Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.data-table th {
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-divider);
+  padding: 6px 12px;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-panel);
+}
+.data-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border-divider);
+}
+.data-table tbody tr:hover {
+  background-color: var(--bg-surface);
+}
+
+/* Schematic Editor SVGs */
+.schematic-svg {
+  background-color: var(--bg-app);
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  user-select: none;
+}
+.component-body {
+  fill: var(--bg-panel);
+  stroke: var(--text-primary);
+  stroke-width: 2;
+}
+.component-selected .component-body {
+  stroke: var(--cs-accent);
+  filter: drop-shadow(0 0 4px rgba(0, 163, 255, 0.5));
+}
+.pin-stub {
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.pin-hover {
+  fill: var(--cs-accent);
+  cursor: crosshair;
+}
+.wire {
+  stroke: var(--status-success);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.wire-selected {
+  stroke: var(--cs-accent);
+  filter: drop-shadow(0 0 4px rgba(0, 163, 255, 0.5));
+}
+.wire-ghost {
+  stroke: var(--cs-accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  fill: none;
+}
+
+/* App Shell */
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

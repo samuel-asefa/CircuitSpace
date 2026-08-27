@@ -1,86 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CircuitSpace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-left">
-            <div class="logo">CS</div>
-            <h1 class="title">CircuitSpace</h1>
-        </div>
-        <div class="header-controls">
-            <button class="btn" id="export-svg-btn">Export SVG</button>
-            <button class="btn" id="generate-bom-btn">Components List</button>
-            <button class="btn" id="clear-all-btn">Clear All</button>
-        </div>
-    </header>
-
-    <div class="main-container">
-        <div class="sidebar">
-            <div class="sidebar-section">
-                <h2 class="section-title">Component Library</h2>
-                <div class="toggle-control">
-                    <span class="toggle-label">Mass Tracking</span>
-                    <div class="toggle" id="mass-toggle">
-                        <div class="toggle-thumb"></div>
-                    </div>
-                </div>
-                <div class="components-grid" id="components-list"></div>
-            </div>
-            <div class="mass-display hidden" id="mass-display">
-                <div class="mass-value" id="mass-value">0.00g</div>
-                <div class="mass-label">Total Mass</div>
-            </div>
-        </div>
-
-        <div class="canvas-area">
-            <div class="canvas-grid"></div>
-            <svg id="drawing-canvas"></svg>
-            <div class="canvas-controls">
-                <button class="zoom-btn" id="zoom-out-btn">−</button>
-                <div class="zoom-display" id="zoom-display">100%</div>
-                <button class="zoom-btn" id="zoom-in-btn">+</button>
-            </div>
-        </div>
-
-        <div class="right-panel">
-            <div class="properties-panel">
-                <h2 class="section-title">Properties</h2>
-                <div id="properties-content">
-                    <div class="placeholder">Select a component to edit properties</div>
-                </div>
-            </div>
-            <div class="status-panel">
-                <h2 class="section-title">System Status</h2>
-                <ul class="status-list" id="status-list"></ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="bom-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Components List</h2>
-                <button class="modal-close" id="modal-close">&times;</button>
-            </div>
-            <table class="bom-table">
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Label</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody id="bom-table-body"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>circuitspace</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
