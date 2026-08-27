@@ -29,8 +29,8 @@ function getComponentPins(comp: ComponentInstance): PinPos[] {
   }));
 }
 
-const PIN_RADIUS = 5;
-const HIT_RADIUS = 10;
+const PIN_RADIUS = 6;
+const HIT_RADIUS = 20;
 
 export const SchematicCanvas: React.FC = () => {
   const svgRef = useRef<SVGSVGElement>(null);
