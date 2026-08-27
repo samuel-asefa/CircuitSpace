@@ -3,7 +3,7 @@ import { useSessionStore } from '../state/sessionStore';
 import { formatCurrentMa, formatPowerW, formatMassG } from '../utils/units';
 
 export const StatusBar: React.FC = () => {
-  const { project, analysis, issues, view } = useSessionStore();
+  const { project, analysis, issues, view, mode, wireStartPin } = useSessionStore();
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'unsaved'>('saved');
 
   useEffect(() => {
@@ -32,12 +32,23 @@ export const StatusBar: React.FC = () => {
     { label: '', value: formatMassG(analysis.totalMassGrams) },
   ];
 
+  let hint = 'Select mode: Drag to select · Space+Drag to pan · Cmd+Scroll to zoom';
+  if (mode === 'place') hint = 'Place mode: Click on canvas to drop component · ESC to cancel';
+  if (mode === 'wire') {
+    hint = wireStartPin 
+      ? 'Wiring: Click a pin to connect · Click space to add corner · ESC to cancel' 
+      : 'Wiring: Click any pin to start routing a wire · ESC to cancel';
+  }
+
   return (
     <div style={{
       height: 24, borderTop: '1px solid var(--border-divider)',
       background: 'var(--bg-surface)', display: 'flex', alignItems: 'center',
       padding: '0 12px', gap: 1, flexShrink: 0,
     }}>
+      <span style={{ fontSize: 10, color: 'var(--text-tertiary)', marginRight: 16 }}>
+        {hint}
+      </span>
       {items.map((item, i) => (
         <React.Fragment key={i}>
           <span style={{

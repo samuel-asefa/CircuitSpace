@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { analyzeCircuit } from '../analysisEngine';
 import { CATALOG_BY_ID } from '../../catalog';
 import { TEMPLATES } from '../../templates';
-import { ProjectSettings, CircuitSheet, ComponentInstance } from '../../types';
+import type { ProjectSettings, CircuitSheet, ComponentInstance } from '../../types';
 
 describe('Analysis Engine', () => {
   const defaultSettings: ProjectSettings = {

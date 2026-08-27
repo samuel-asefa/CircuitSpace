@@ -1,12 +1,13 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useSessionStore } from '../state/sessionStore';
 import { useAppStore } from '../state/appStore';
 import { saveProject } from '../projects/db';
 import {
   FileJson, Image, Camera, FileText, FileSpreadsheet,
   Play, Save, Undo, Redo, LayoutDashboard,
-  PanelBottom, PanelLeft, Zap
+  PanelBottom, PanelLeft, Zap, HelpCircle
 } from 'lucide-react';
+import { HelpModal } from './HelpModal';
 import {
   exportProjectJson, exportBomCsv, exportNetlistCsv,
   exportPdfReport, exportSvg, exportPng
@@ -21,6 +22,8 @@ export const TopBar: React.FC = () => {
     leftSidebarOpen, setLeftSidebarOpen,
     bottomPanelOpen, setBottomPanelOpen,
   } = useAppStore();
+
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   // Autosave
   useEffect(() => {
@@ -87,7 +90,7 @@ export const TopBar: React.FC = () => {
       </div>
 
       {/* Center */}
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <button
           className="btn btn-primary"
           onClick={recalculate}
@@ -95,6 +98,9 @@ export const TopBar: React.FC = () => {
           title="Run Electrical Rules Check"
         >
           <Play size={13} /> Run ERC
+        </button>
+        <button className="btn-icon" onClick={() => setIsHelpOpen(true)} title="Help & Shortcuts">
+          <HelpCircle size={16} />
         </button>
       </div>
 
@@ -142,6 +148,7 @@ export const TopBar: React.FC = () => {
           ))}
         </div>
       </div>
+      {isHelpOpen && <HelpModal onClose={() => setIsHelpOpen(false)} />}
     </div>
   );
 };
